@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes Apps</title>
+    <link rel="stylesheet" href="add.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="conainer">
+        <div class="add" id="add">
+            <i class="fa-solid fa-plus"></i>
+            <h2>Add Notes</h2>
+        </div>
+        
+        <div class="note" id="note">
+   
+        </div>
+           
+            <div class="form" id="form">
+                <div class="top">
+                    <h2 class="head">Add Notes</h2>
+                    <p id="p"><i class="fa-solid fa-circle-xmark"></i></p>
+                </div>
+                
+                <p class="form1">Titele</p>
+                <input type="text" id="titele" name="name">
+                <p class="form1">Discription</p>
+                <textarea name="" id="dis" cols="30" rows="7"></textarea>
+                <button id="btn">Add Note</button>
+            </div>
+
+       
+    </div>
+    <script>
+        let add = document.getElementById("add");
+        let del = document.getElementById("p")
+        let btn = document.getElementById("btn")
+
+
+        add.addEventListener("click", function(){
+            document.getElementById("form").style.display="block"
+            document.getElementById("titele").value="";
+            document.getElementById("dis").value="";
+        });
+
+        del.addEventListener("click", function(){
+            document.getElementById("form").style.display="none"
+        });
+
+       btn.addEventListener("click",function(){
+        document.getElementById("form").style.display="none";
+        if(document.getElementById("titele").value == ""
+          && document.getElementById("dis").value=="") {
+            alert("Notes empty ! ")
+          } 
+        else{
+        let div = document.createElement("div");
+        div.classList.add("mynote");
+
+         div.innerHTML=`
+            <h3>${document.getElementById("titele").value}</h3>
+            <p>${document.getElementById("dis").value}</p>
+            <button>Delete</button>
+         `
+        
+         document.getElementById("note").appendChild(div);
+
+         
+         div.querySelector("button").addEventListener("click", function(){
+            div.remove();
+          
+         });
+
+        }
+       });
+    </script>
+        
+    </body>
+
+
+
+
+
+
+
+
+
+
